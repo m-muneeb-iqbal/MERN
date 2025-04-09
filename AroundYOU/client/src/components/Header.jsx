@@ -103,7 +103,7 @@ const Header = () => {
                                     <div class="container">
                                         <div class="col-3">
             
-                                            {/* <img src="../Images/notIcons/apple-button-sidebar-footer.svg" alt="apple button sidebar" > */}
+                                            <img src="./Images/notIcons/apple-button-sidebar-footer.svg" alt="apple button sidebar"/>
             
                                         </div>
 
