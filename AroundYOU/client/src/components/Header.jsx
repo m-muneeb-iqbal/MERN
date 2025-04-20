@@ -2,6 +2,7 @@ import React from 'react';
 import './../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './../../node_modules/bootstrap/dist/js/bootstrap.js'
 import './../../src/styles/style.css'
+import './../../src/scripts/script.js'
 
 const Header = () => {
   return (
@@ -22,7 +23,7 @@ const Header = () => {
                 
                                 <img src="./Images/icons/sidebar-close-button.svg" alt="close button" className="img-fluid" type="button" data-bs-dismiss="offcanvas" aria-label="close"/>
 
-                                <img src="./Images/notIcons/edyou-sidebar.svg" alt="edyou" className="img-fluid"/>
+                                <img src="./Images/notIcons/AroundYou-sidebar.png" alt="edyou" className="img-fluid aroundyou-sidbar-heading"/>
 
                             </div>
 
@@ -121,7 +122,7 @@ const Header = () => {
 
                 <div className="col-4 heading">
         
-                    <img src="./Images/notIcons/edyou-main-heading.png" alt="" />
+                    <img src="./Images/notIcons/AroundYou-heading-whitee.png" className='aroundyou-main-heading img-fluid' alt="" />
         
                 </div>
         
