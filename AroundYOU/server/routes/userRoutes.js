@@ -4,13 +4,28 @@ import User from "../models/User.js";
 
 console.log("✅ userRoutes loaded");
 
-router.post("/add-user", async (req, res) => {
-  console.log("📥 POST /add-user hit", req.body);
+router.post('/add-user', async (req, res) => {
+  const { email, username, password } = req.body;
+
   try {
-    const user = await User.create(req.body);
-    res.status(201).json(user);
+    const newUser = new User({
+      email,
+      username,
+      password,  // Ideally, hash the password before saving it!
+    });
+
+    // Save the user to the database
+    await newUser.save();
+
+    return res.status(200).json({
+      success: true,
+      message: 'User registered successfully!',
+    });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    return res.status(500).json({
+      error: 'Failed to register user, please try again later.',
+    });
   }
 });
 

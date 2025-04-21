@@ -128,7 +128,6 @@ function updateButtonImages() {
 
 //form validation
 (() => {
-  'use strict'
 
   const forms = document.querySelectorAll('.needs-validation')
   
