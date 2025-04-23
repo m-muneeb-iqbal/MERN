@@ -1,4 +1,5 @@
 import { useState } from "react";
+import bcrypt from 'bcryptjs';
 
 export const useSignup = () => {
   const [formData, setFormData] = useState({
@@ -72,12 +73,16 @@ export const useSignup = () => {
     }
 
     try {
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      
       const response = await fetch("/api/add-user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username, password }),
+        body: JSON.stringify({ email, username, password: hashedPassword }),
       });
 
       const data = await response.json();
