@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import { connect } from "mongoose";
+import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 
@@ -19,6 +20,9 @@ connect(process.env.MONGO_URI)
 app.get("/", (req, res) => {
   res.send("API is working!");
 });
+
+// use user routes
+app.use('/api', userRoutes);
 
 // Start server
 app.listen(PORT, () => {

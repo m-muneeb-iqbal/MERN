@@ -9,6 +9,11 @@ header, .section-1 {
     cursor: pointer;
   
   }
+
+  .aroundyou-sidbar-heading {
+    width: 25%;
+    height: 70%;
+  }
   
   .sidebar-menu-items-color {
   
@@ -69,12 +74,6 @@ header, .section-1 {
   
     width: 180px;
     font-size: 20px;
-  
-  }
-  
-  .btn-success:hover {
-  
-    text-decoration: underline;
   
   }
   
@@ -401,7 +400,7 @@ header, .section-1 {
   
   }
   
-  .join-btn, .signin-btn, .section-3, .section-4 {
+  .section-3, .section-4 {
   
     font-family: 'Times New Roman', Times, serif;
   
@@ -533,6 +532,8 @@ header, .section-1 {
   
   }
   
+
+
   .footer-items:hover{
   
     color: #646464;
