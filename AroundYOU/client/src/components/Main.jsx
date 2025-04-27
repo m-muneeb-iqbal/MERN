@@ -21,7 +21,7 @@ const Main = () => {
                         <p className="text-white fw-bold private-social-text mt-5 pt-5">
 
                             The private social app made for&nbsp;
-                            <span className="college-life-text d-inline-block">college life</span>
+                            <span className="college-life-text d-inline-block">college life</span>.
 
                         </p>
 

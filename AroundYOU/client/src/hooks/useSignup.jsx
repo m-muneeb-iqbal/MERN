@@ -5,6 +5,7 @@ export const useSignup = () => {
     const [formData, setFormData] = useState ({
         email: "",
         username: "",
+        role: "",
         password: "",
         confirmPassword: ""
     });
@@ -36,7 +37,7 @@ export const useSignup = () => {
             case "confirmPassword":
 
                 fieldErrors.confirmPassword =
-                  value !== formData.password ? "Passwords do not match" : "";
+                  value !== formData.password ? "Passwords do not match!" : "";
                 break;
 
             default:
@@ -70,7 +71,7 @@ export const useSignup = () => {
         setError("");
         setSuccess("");
         
-        const { email, username, password, confirmPassword } = formData;
+        const { email, username, role, password, confirmPassword } = formData;
         
         // Final validation before sending to backend
         if (Object.values(errors).some((err) => err)) {
@@ -81,7 +82,7 @@ export const useSignup = () => {
         if (password !== confirmPassword) {
             setErrors((prev) => ({
                 ...prev,
-                confirmPassword: "Passwords do not match",
+                confirmPassword: "Passwords do not match!",
             }));
             return;
         }
@@ -96,7 +97,7 @@ export const useSignup = () => {
                 headers: {
                     "Content-Type": "application/json",
                     },
-                body: JSON.stringify({ email, username, password: hashedPassword }),
+                body: JSON.stringify({ email, username, role, password: hashedPassword }),
             });
         
             const data = await response.json();
@@ -106,6 +107,7 @@ export const useSignup = () => {
                 setFormData({
                     email: "",
                     username: "",
+                    role:"",
                     password: "",
                     confirmPassword: "",
                 });

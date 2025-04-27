@@ -152,6 +152,20 @@ const SignupModal = () => {
                                     required
                                 />
 
+                                <select 
+                                    name="role" 
+                                    className={`form-control col-md-12 mb-3 ${ formData.role ? (errors.role ? "is-invalid" : "is-valid") : "" }`}
+                                    value={formData.role}
+                                    onChange={handleChange}
+                                    required
+                                >
+
+                                    <option value="" disabled>Select your role</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Alumni">Alumni</option>
+
+                                </select>
+
                                 <input
                                     type="password"
                                     name="password"

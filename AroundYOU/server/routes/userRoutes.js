@@ -7,12 +7,13 @@ const router = Router();
 console.log("✅ userRoutes loaded");
 
 router.post('/add-user', async (req, res) => {
-  const { email, username, password } = req.body;
+  const { email, username, role, password } = req.body;
 
   try {
     const newUser = new User({
       email,
       username,
+      role,
       password,  // Ideally, hash the password before saving it!
     });
 
@@ -26,7 +27,7 @@ router.post('/add-user', async (req, res) => {
   } catch (err) {
     console.error(err);
     return res.status(500).json({
-      error: 'Failed to register user, please try again later.',
+      error: 'Failed to register user! Please try again later.',
     });
   }
 });

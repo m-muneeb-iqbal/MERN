@@ -12,6 +12,13 @@ const UserSchema = new Schema({
     required: true,
     unique: true,  // You might want to ensure unique usernames
   },
+  role: {
+
+    type: String,
+    enum: ["Admin", "Student", "Alumni"],
+    required: true
+
+  },
   password: {
     type: String,
     required: true,
