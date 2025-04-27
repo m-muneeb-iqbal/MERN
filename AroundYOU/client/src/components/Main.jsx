@@ -211,13 +211,13 @@ const Main = () => {
 
             </section>
 
-            <section  class="container-fluid section-2 pt-5">
+            <section  className="container-fluid section-2 pt-5">
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-12 d-flex justify-content-center cover-section">
+                    <div className="col-12 d-flex justify-content-center cover-section">
 
-                        <img src="./Images/notIcons/aroundyoux.png" alt="cover brand" class="img-fluid pt-5"/>
+                        <img src="./Images/notIcons/aroundyoux.png" alt="cover brand" className="img-fluid pt-5"/>
 
                     </div>
 
@@ -225,119 +225,119 @@ const Main = () => {
 
             </section>
 
-            <section class="section-3 container-fluid mb-0">
+            <section className="section-3 container-fluid mb-0">
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
     
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-md-0 mt-sm-0 mt-5">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-md-0 mt-sm-0 mt-5">
     
-                        <div class="col-1 position-fixed button-container">
+                        <div className="col-1 position-fixed button-container">
     
-                            <button onclick={scrollToSection(0)} class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Post-icon.png" data-image-selected="./Images/icons/Selected-Post.png">
+                            <button onclick={scrollToSection(0)} className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Post-icon.png" data-image-selected="./Images/icons/Selected-Post.png">
     
-                                <img src="./Images/icons/Post-icon.png" alt="Post button" class="img-fluid"/>
+                                <img src="./Images/icons/Post-icon.png" alt="Post button" className="img-fluid"/>
                             
                             </button>
     
-                            <button onclick={scrollToSection(1)} class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Chat.png" data-image-selected="./Images/icons/Selected Chat.png">
+                            <button onclick={scrollToSection(1)} className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Chat.png" data-image-selected="./Images/icons/Selected Chat.png">
     
-                                <img src="./Images/icons/Chat.png" alt="Chat button" class="img-fluid"/>
+                                <img src="./Images/icons/Chat.png" alt="Chat button" className="img-fluid"/>
                             
                             </button>
     
-                            <button onclick={scrollToSection(2)} class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Events.png" data-image-selected="./Images/icons/Selected Events.png">
+                            <button onclick={scrollToSection(2)} className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Events.png" data-image-selected="./Images/icons/Selected Events.png">
     
-                                <img src="./Images/icons/Events.png" alt="Events Button" class="img-fluid"/>
+                                <img src="./Images/icons/Events.png" alt="Events Button" className="img-fluid"/>
                             
                             </button>
     
-                            <button onclick={scrollToSection(3)} class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Community.png" data-image-selected="./Images/icons/Selected Community.png">
+                            <button onclick={scrollToSection(3)} className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Community.png" data-image-selected="./Images/icons/Selected Community.png">
     
-                                <img src="./Images/icons/Community.png" alt="Community button" class="img-fluid"/>
+                                <img src="./Images/icons/Community.png" alt="Community button" className="img-fluid"/>
                             
                             </button>
     
-                            <button onclick={scrollToSection(4)} class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Story icon.png" data-image-selected="./Images/icons/Selected Story.png">
+                            <button onclick={scrollToSection(4)} className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Story icon.png" data-image-selected="./Images/icons/Selected Story.png">
     
-                                <img src="./Images/icons/Story icon.png" alt="Story button" class="img-fluid"/>
+                                <img src="./Images/icons/Story icon.png" alt="Story button" className="img-fluid"/>
                             
                             </button>
                             
                         </div>
     
-                        <p class="h1 text-success">Post</p>
+                        <p className="h1 text-success">Post</p>
                         <p>100% USER CONTROL</p>
                         <p>U Post to who you want.</p>
                         <p>U decide how long your content lives</p>
                         <p>Self-Destruct times illustration</p>
     
-                        <img src="./Images/notIcons/Post.png" alt="" class="img-fluid image"/>
+                        <img src="./Images/notIcons/Post.png" alt="" className="img-fluid image"/>
     
                     </div>
     
                 </div>
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
         
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
         
-                        <p class="h1 text-success">Chat</p>
+                        <p className="h1 text-success">Chat</p>
                         <p>Encrypted for your security.</p>
                         <p>Message 1 person, create a group and message more!</p>
         
-                        <img src="./Images/notIcons/Chat Images.png" alt="" class="img-fluid image"/>
+                        <img src="./Images/notIcons/Chat Images.png" alt="" className="img-fluid image"/>
     
                     </div>
     
                 </div>
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
     
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
     
-                        <p class="h1 text-success">U Events w/RSVP feature</p>
+                        <p className="h1 text-success">U Events w/RSVP feature</p>
                         <p>Scheduling events, meetings, lunches and dinners have never been easier.</p>
                         <p>Set the event, select the guest and send the event, we handle the rest.</p>
                         <p>Automatically enters in your event calendar.</p>
         
-                        <img src="./Images/notIcons/Birthday.png" alt="" class="img-fluid image"/>
+                        <img src="./Images/notIcons/Birthday.png" alt="" className="img-fluid image"/>
     
                     </div>
     
                 </div>
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
     
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
         
-                        <p class="h1 text-success">U Communities</p>
+                        <p className="h1 text-success">U Communities</p>
                         <p>U can set up any type of group, whether it is with two people or establish a new community for the everyone, it's up to U.</p>
                         <p>U have public and private groups for you to decide to create or join.</p>
                         
-                        <img src="./Images/notIcons/Cafe.png" alt="" class="img-fluid image"/>
+                        <img src="./Images/notIcons/Cafe.png" alt="" className="img-fluid image"/>
     
                     </div>
                 
                 </div>
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
     
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center mt-5 section">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center mt-5 section">
     
-                        <p class="h1 text-success">Stories</p>
+                        <p className="h1 text-success">Stories</p>
                         <p>U can stay connected with your college friends and easily share your college memories and experiences all at once!</p>
         
-                        <img src="./Images/notIcons/Story.png" alt="" class="img-fluid story"/>
+                        <img src="./Images/notIcons/Story.png" alt="" className="img-fluid story"/>
         
                     </div>
     
@@ -345,119 +345,119 @@ const Main = () => {
 
             </section>
 
-            <section class="section-3 container-fluid mb-0">
+            <section className="section-3 container-fluid mb-0">
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
     
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-md-0 mt-sm-0 mt-5">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-md-0 mt-sm-0 mt-5">
     
-                        <div class="col-1 position-fixed button-container">
+                        <div className="col-1 position-fixed button-container">
     
-                            <button onclick="scrollToSection(0)" class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Post icon.png" data-image-selected="./Images/icons/Selected Post.png">
+                            <button onclick="scrollToSection(0)" className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Post icon.png" data-image-selected="./Images/icons/Selected Post.png">
     
-                                <img src="./Images/icons/Post icon.png" alt="Post button" class="img-fluid"/>
+                                <img src="./Images/icons/Post icon.png" alt="Post button" className="img-fluid"/>
                             
                             </button>
     
-                            <button onclick="scrollToSection(1)" class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Chat.png" data-image-selected="./Images/icons/Selected Chat.png">
+                            <button onclick="scrollToSection(1)" className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Chat.png" data-image-selected="./Images/icons/Selected Chat.png">
     
-                                <img src="./Images/icons/Chat.png" alt="Chat button" class="img-fluid"/>
+                                <img src="./Images/icons/Chat.png" alt="Chat button" className="img-fluid"/>
                             
                             </button>
     
-                            <button onclick="scrollToSection(2)" class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Events.png" data-image-selected="./Images/icons/Selected Events.png">
+                            <button onclick="scrollToSection(2)" className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Events.png" data-image-selected="./Images/icons/Selected Events.png">
     
-                                <img src="./Images/icons/Events.png" alt="Events Button" class="img-fluid"/>
+                                <img src="./Images/icons/Events.png" alt="Events Button" className="img-fluid"/>
                             
                             </button>
     
-                            <button onclick="scrollToSection(3)" class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Community.png" data-image-selected="./Images/icons/Selected Community.png">
+                            <button onclick="scrollToSection(3)" className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Community.png" data-image-selected="./Images/icons/Selected Community.png">
     
-                                <img src="./Images/icons/Community.png" alt="Community button" class="img-fluid"/>
+                                <img src="./Images/icons/Community.png" alt="Community button" className="img-fluid"/>
                             
                             </button>
     
-                            <button onclick="scrollToSection(4)" class="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Story icon.png" data-image-selected="./Images/icons/Selected Story.png">
+                            <button onclick="scrollToSection(4)" className="border-0 bg-white image-button" data-index="0" data-image-default="./Images/icons/Story icon.png" data-image-selected="./Images/icons/Selected Story.png">
     
-                                <img src="./Images/icons/Story icon.png" alt="Story button" class="img-fluid"/>
+                                <img src="./Images/icons/Story icon.png" alt="Story button" className="img-fluid"/>
                             
                             </button>
                             
                         </div>
     
-                        <p class="h1 text-success">Post</p>
+                        <p className="h1 text-success">Post</p>
                         <p>100% USER CONTROL</p>
                         <p>U Post to who you want.</p>
                         <p>U decide how long your content lives</p>
                         <p>Self-Destruct times illustration</p>
     
-                        <img src="./Images/notIcons/Post.png" alt="" class="img-fluid image"/>
+                        <img src="./Images/notIcons/Post.png" alt="" className="img-fluid image"/>
     
                     </div>
     
                 </div>
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
         
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
         
-                        <p class="h1 text-success">Chat</p>
+                        <p className="h1 text-success">Chat</p>
                         <p>Encrypted for your security.</p>
                         <p>Message 1 person, create a group and message more!</p>
         
-                        <img src="./Images/notIcons/Chat Images.png" alt="" class="img-fluid image"/>
+                        <img src="./Images/notIcons/Chat Images.png" alt="" className="img-fluid image"/>
     
                     </div>
     
                 </div>
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
     
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
     
-                        <p class="h1 text-success">U Events w/RSVP feature</p>
+                        <p className="h1 text-success">U Events w/RSVP feature</p>
                         <p>Scheduling events, meetings, lunches and dinners have never been easier.</p>
                         <p>Set the event, select the guest and send the event, we handle the rest.</p>
                         <p>Automatically enters in your event calendar.</p>
         
-                        <img src="./Images/notIcons/Birthday.png" alt="" class="img-fluid image"/>
+                        <img src="./Images/notIcons/Birthday.png" alt="" className="img-fluid image"/>
     
                     </div>
     
                 </div>
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
     
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center section mt-5">
         
-                        <p class="h1 text-success">U Communities</p>
+                        <p className="h1 text-success">U Communities</p>
                         <p>U can set up any type of group, whether it is with two people or establish a new community for the everyone, it's up to U.</p>
                         <p>U have public and private groups for you to decide to create or join.</p>
                         
-                        <img src="./Images/notIcons/Cafe.png" alt="" class="img-fluid image"/>
+                        <img src="./Images/notIcons/Cafe.png" alt="" className="img-fluid image"/>
     
                     </div>
                 
                 </div>
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-2"></div>
+                    <div className="col-2"></div>
     
-                    <div class="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center mt-5 section">
+                    <div className="col-md-4 col-sm-4 col-8 d-flex flex-column justify-content-center mt-5 section">
     
-                        <p class="h1 text-success">Stories</p>
+                        <p className="h1 text-success">Stories</p>
                         <p>U can stay connected with your college friends and easily share your college memories and experiences all at once!</p>
         
-                        <img src="./Images/notIcons/Story.png" alt="" class="img-fluid story"/>
+                        <img src="./Images/notIcons/Story.png" alt="" className="img-fluid story"/>
         
                     </div>
     

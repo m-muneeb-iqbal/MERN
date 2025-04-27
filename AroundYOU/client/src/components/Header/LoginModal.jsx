@@ -70,7 +70,7 @@ const LoginModal = () => {
 
     return (
 
-        <div className="col-4 d-flex justifycontent-center">
+        <div className="col-4 d-flex justify-content-center">
 
             <button 
 

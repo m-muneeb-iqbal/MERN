@@ -74,21 +74,21 @@ const Sidebar = () => {
                                 <div className="col-md-6 col-12">
             
                                     <label className="fw-bold text-black-50">Email</label>
-                                    <p className="fw-bold text-black-50">supportme@edyou.com</p>
+                                    <p className="fw-bold text-black-50">supportme@aroundyou.com</p>
             
                                 </div>
             
                                 <div className="col-md-6 col-12">
             
                                     <label className="fw-bold text-black-50">Phone</label>
-                                    <p className="fw-bold text-black-50">+1 607 254 4636</p>
+                                    <p className="fw-bold text-black-50">+1 111 111 1111</p>
             
                                 </div>
             
                                 <div className="col-md-9 col-12">
             
                                     <label className="fw-bold text-black-50">Address</label>
-                                    <p className="fw-bold text-black-50">Ithaca, NY 14850, United States</p>
+                                    <p className="fw-bold text-black-50">ABC, KHI 57015, Pakistan</p>
             
                                 </div>
             

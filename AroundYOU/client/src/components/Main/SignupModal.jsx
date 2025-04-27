@@ -50,7 +50,7 @@ const SignupModal = () => {
             }
         };
 
-    }, []);
+    }, [setError, setErrors, setFormData, setSuccess]);
 
     useEffect(() => {
 

@@ -13,12 +13,12 @@ app.use(express.json());
 
 // Connect to MongoDB
 connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+    .then(() => console.log("✅ Connected to MongoDB"))
+    .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // Test route
 app.get("/", (req, res) => {
-  res.send("API is working!");
+    res.send("API is working!");
 });
 
 // use user routes
@@ -26,5 +26,5 @@ app.use('/api', userRoutes);
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
