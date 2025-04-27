@@ -1,7 +1,7 @@
 import React from 'react';
-import './../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import './../../node_modules/bootstrap/dist/js/bootstrap.js'
-import './../styles/style.css'
+import './../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './../../node_modules/bootstrap/dist/js/bootstrap.js';
+import './../styles/style.css';
 import { scrollToSectionCover } from '../scripts/script.js';
 import { scrollToSection } from '../scripts/script.js';
 import SignupModal from './Main/SignupModal.jsx';
@@ -217,7 +217,7 @@ const Main = () => {
 
                     <div class="col-12 d-flex justify-content-center cover-section">
 
-                        <img src="./Images/notIcons/Group-357.png" alt="cover brand" class="img-fluid pt-5"/>
+                        <img src="./Images/notIcons/aroundyoux.png" alt="cover brand" class="img-fluid pt-5"/>
 
                     </div>
 

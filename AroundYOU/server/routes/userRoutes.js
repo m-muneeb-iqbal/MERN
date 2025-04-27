@@ -1,6 +1,8 @@
-import { Router } from 'express';
-const router = Router();
+import bcrypt from 'bcryptjs';
 import User from "../models/User.js";
+import { Router } from 'express';
+
+const router = Router();
 
 console.log("✅ userRoutes loaded");
 
@@ -35,6 +37,33 @@ router.get("/users", async (req, res) => {
     res.json(users);
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+router.post('/login-user', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // 1. Find user by email
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid email or password' });
+    }
+
+    // 2. Compare hashed password
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ error: 'Invalid email or password' });
+    }
+
+    // 3. If everything is fine
+    return res.status(200).json({ message: 'Login successful!' });
+
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Server error' });
   }
 });
 

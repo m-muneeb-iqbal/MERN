@@ -1,8 +1,9 @@
 import React from 'react';
-import './../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import './../../node_modules/bootstrap/dist/js/bootstrap.js'
-import './../../src/styles/style.css'
-import './../../src/scripts/script.js'
+import './../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './../../node_modules/bootstrap/dist/js/bootstrap.js';
+import './../../src/styles/style.css';
+import './../../src/scripts/script.js';
+import LoginModal from './Header/LoginModal.jsx';
 
 const Header = () => {
   return (
@@ -125,62 +126,8 @@ const Header = () => {
                     <img src="./Images/notIcons/AroundYou-heading-white.png" className='aroundyou-main-heading img-fluid' alt="" />
         
                 </div>
-        
-                <div className="col-4 d-flex justify-content-center">
-        
-                    <button type="button" className="btn btn-success btn-sm fw-bold signin-btn" data-bs-toggle="modal" data-bs-target="#signInModal">
-                        Log In
-                    </button>
 
-                    <div className="modal fade" id="signInModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
-
-                        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-
-                            <div className="modal-content">
-
-                                <svg type="button" data-bs-dismiss="modal" viewBox="0 0 16 16" width="2em" height="2em" focusable="false" role="img" aria-label="arrow left circle" 
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="mx-5 mt-3 bi-arrow-left-circle b-icon bi">
-                                    <g>
-                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
-                                    </g>
-                                </svg>
-
-                                <div className="modal-body p-5">
-
-                                    <p className="modal-title fw-bolder text-start fw-bolder text-start sign-in" id="signInModalLabel">Sign In to Your Account</p>
-
-                                    <p className="text-start">Welcome back! Please sign in to continue.</p>
-
-                                    <form action="" className="needs-validation" novalidate>
-                                        
-                                        <div className="mb-3">
-
-                                            <label htmlFor="email" className="form-label">Email address</label>
-                                            <input type="email" id="email" name="email" placeholder="Enter your email" className="form-control col-md-12 mb-3" required />
-                                            
-                                        </div>
-                                        
-                                        <div className="mb-3">
-
-                                            <label htmlFor="password" className="form-label">Password</label>
-                                            <input type="password" id="password" name="password" placeholder="Enter your password"className="form-control col-md-12 mb-3" required />
-
-                                        </div>
-    
-                                        <button className="btn btn-success col-md-12 w-100" type="submit">Sign In</button>
-
-                                    </form>
-
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <LoginModal/>
 
             </div>
 
