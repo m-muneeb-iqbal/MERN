@@ -1,9 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react';
 import { useSignup } from '../../hooks/useSignup';
-import { Modal } from "bootstrap";
+import {Modal} from 'bootstrap';
 
 const SignupModal = () => {
+
     const {
+
         formData,
         handleChange,
         handleSubmit,
@@ -14,67 +16,79 @@ const SignupModal = () => {
         setError,
         setSuccess,
         setErrors,
-      } = useSignup();
+
+    } = useSignup();
 
     const modalRef = useRef(null);
     const bsModalRef = useRef(null);
 
-    useEffect(() => {
+    useEffect (() => {
+
         const modalElement = document.getElementById("staticBackdrop");
         if (modalElement) {
-          modalRef.current = modalElement;
-          bsModalRef.current = new Modal(modalElement);
 
-          modalElement.addEventListener("hidden.bs.modal", () => {
-            setFormData({
-              email: "",
-              username: "",
-              password: "",
-              confirmPassword: "",
+            modalRef.current = modalElement;
+            bsModalRef.current = new Modal(modalElement);
+
+            modalElement.addEventListener("hidden.bs.modal", () => {
+                setFormData({
+                    email: "",
+                    username: "",
+                    password: "",
+                    confirmPassword: ""
+                });
+                setErrors({});
+                setError("");
+                setSuccess("");
             });
-            setErrors({});
-            setError("");
-            setSuccess("");
-          });
+
         }
 
         return () => {
             if (modalElement) {
-              modalElement.removeEventListener("hidden.bs.modal", () => {});
+                modalElement.removeEventListener("hidden.bs.modal", () => {});
             }
         };
+
     }, []);
 
     useEffect(() => {
-        if (success) {
-          const timer = setTimeout(() => {
-            const modalEl = document.getElementById('staticBackdrop');
-            const modalInstance = Modal.getInstance(modalEl);
-      
-            if (modalInstance) {
-              modalInstance.hide();
-      
-              // Wait for Bootstrap modal hidden event
-              modalEl.addEventListener('hidden.bs.modal', () => {
-                // 1. Remove modal-open class from body
-                document.body.classList.remove('modal-open');
-      
-                // 2. Remove leftover backdrop manually if any
-                const backdrops = document.querySelectorAll('.modal-backdrop');
-                backdrops.forEach((backdrop) => backdrop.remove());
-      
-                // 3. Reset body's overflow (if still hidden)
-                document.body.style.overflow = 'auto';
-              }, { once: true }); // once:true so event listener is auto-removed after firing
-            }
-          }, 1500);
-      
-          return () => clearTimeout(timer);
-        }
-      }, [success]);
-      
-    return (
 
+        if (success) {
+
+            const timer = setTimeout(() => {
+
+                const modalEl = document.getElementById('staticBackdrop');
+                const modalInstance = Modal.getInstance(modalEl);
+
+                if (modalInstance) {
+
+                    modalInstance.hide();
+
+                    // Wait for Bootstrap modal hidden event
+                    modalEl.addEventListener('hidden.bs.modal', () => {
+
+                        // 1. Remove modal-open class from body
+                        document.body.classList.remove('modal-open');
+
+                        // 2. Remove leftover backdrop manually if any
+                        const backdrops = document.querySelectorAll('.modal-backdrop');
+                        backdrops.forEach((backdrop) => backdrop.remove());
+
+                        // 3. Reset body's overflow (if still hidden)
+                        document.body.style.overflow = 'auto';
+                    }, { once: true});
+
+                }
+
+            }, 1500);
+
+            return () => clearTimeout(timer);
+
+        }
+    }, [success]);
+
+    return (
         <div className="mt-5 pt-5 pb-1 mt-md-3 pt-md-3 pb-md-0 ">
 
             <p type="button" className="btn btn-success fw-bold join-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -175,9 +189,8 @@ const SignupModal = () => {
             </div>
 
         </div>
-
     );
-    
+
 };
 
 export default SignupModal;

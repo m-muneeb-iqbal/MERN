@@ -1,90 +1,95 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export const useLogin = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
   
-  const [errors, setErrors] = useState({});
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+    const [errors, setErrors] = useState({});
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
-  const validateField = (name, value) => {
-    let fieldErrors = {};
+    const validateField = (name, value) => {
+        let fieldErrors = {};
 
-    switch (name) {
-      case "email":
-        fieldErrors.email = !/\S+@\S+\.\S+/.test(value) ? "Invalid email address" : "";
-        break;
-      case "password":
-        fieldErrors.password = value.length < 8 ? "Password must be at least 8 characters" : "";
-        break;
-      default:
-        break;
-    }
+        switch (name) {
 
-    setErrors((prev) => ({
-      ...prev,
-      ...fieldErrors,
-    }));
-  };
+            case "email":
+                fieldErrors.email = !/\S+@\S+\.\S+/.test(value) ? "Invalid email address" : "";
+                break;
+            case "password":
+                fieldErrors.password = value.length < 8 ? "Password must be at least 8 characters" : "";
+                break;
+            default:
+                break;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+        }
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+        setErrors((prev) => ({
+        ...prev,
+        ...fieldErrors,
+        }));
+    };
 
-    validateField(name, value);
-  };
+    const handleChange = (e) => {
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
+        const { name, value } = e.target;
 
-    if (Object.values(errors).some((err) => err)) {
-      setError("Please correct the errors in the form.");
-      return;
-    }
+        setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+        }));
 
-    try {
-      const response = await fetch("/api/login-user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+        validateField(name, value);
+    };
 
-      const data = await response.json();
+    const handleSubmit = async (e) => {
 
-      if (response.ok) {
-        setSuccess("Login successful!");
-        setFormData({ email: "", password: "" });
-        setErrors({});
-        // Optionally redirect or store token
-      } else {
-        setError(data.error || "Invalid credentials");
-      }
-    } catch (err) {
-      setError("Server error");
-    }
-  };
+        e.preventDefault();
+        setError("");
+        setSuccess("");
 
-  return {
-    formData,
-    handleChange,
-    handleSubmit,
-    error,
-    success,
-    errors,
-    setFormData,
-    setError,
-    setSuccess,
-    setErrors,
-  };
+        if (Object.values(errors).some((err) => err)) {
+            setError("Please correct the errors in the form.");
+            return;
+        }
+
+        try {
+
+            const response = await fetch("/api/login-user", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSuccess("Login successful!");
+                setFormData({ email: "", password: "" });
+                setErrors({});
+                // Optionally redirect or store token
+            } else {
+                setError(data.error || "Invalid credentials");
+            }
+        } catch (err) {
+            setError("Server error");
+        }
+    };
+
+    return {
+        formData,
+        handleChange,
+        handleSubmit,
+        error,
+        success,
+        errors,
+        setFormData,
+        setError,
+        setSuccess,
+        setErrors,
+    };
 };
