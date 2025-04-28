@@ -1,6 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export const useLogin = () => {
+
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -71,6 +76,7 @@ export const useLogin = () => {
                 setSuccess("Login successful!");
                 setFormData({ email: "", password: "" });
                 setErrors({});
+                navigate('/dashboard');
                 // Optionally redirect or store token
             } else {
                 setError(data.error || "Invalid credentials");
