@@ -4,9 +4,15 @@ import 'bootstrap';
 import '../../../styles/style.css';
 import '../../../scripts/script.js';
 import Sidebar from './Sidebar.jsx';
-import LoginModal from './LoginModal.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+
+    const navigate = useNavigate();
+
+    const goToLogin = () => {
+        navigate('/login');
+    };
     
   return (
 
@@ -28,7 +34,12 @@ const Header = () => {
         
                 </div>
 
-                <LoginModal/>
+                <button
+                    onClick={goToLogin}
+                    className="btn btn-success btn-sm fw-bold signin-btn"
+                >
+                    Log In
+                </button>
 
 
             </div>

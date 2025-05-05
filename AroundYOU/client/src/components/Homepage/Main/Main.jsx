@@ -4,13 +4,19 @@ import 'bootstrap';
 import './../../../styles/style.css'
 import { scrollToSectionCover } from '../../../scripts/script.js';
 import { scrollToSection } from '../../../scripts/script.js';
-import SignupModal from './SignupModal.jsx';
+import { useNavigate } from 'react-router-dom';
 
-const Main = () => {
+const HomePage = () => {
 
-    return (
+    const navigate = useNavigate();
 
-        <main>
+    const handleSignupClick = () => {
+        navigate('/signup');
+    };
+    
+  return (
+
+    <main>
 
             <section className="container-fluid mt-0 section-1">
 
@@ -27,7 +33,11 @@ const Main = () => {
 
                         <img src="./Images/notIcons/line_home.png" alt="main heading underline" className="img-fluid line"/>
                         
-                        <SignupModal/>
+                        <p onClick={handleSignupClick} className="btn btn-success fw-bold join-btn">
+                            Sign up Now
+                            <img src="./Images/icons/Arrow-Icon.png" alt="" className="img-fluid" />
+                        </p>
+
 
                         <img src="./Images/icons/Mouse.png" alt="scroll mouse" className="img-fluid mouse-icon"onClick={scrollToSectionCover} />
 
@@ -466,7 +476,9 @@ const Main = () => {
             </section>
 
         </main>
-    );
+    
+    
+  );
 };
 
-export default Main;
+export default HomePage;

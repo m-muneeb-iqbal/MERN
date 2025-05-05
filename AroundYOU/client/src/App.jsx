@@ -1,28 +1,35 @@
 // client/src/App.jsx
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout'
-import DashboardLayout from './layouts/DashboardLayout';
-import Main from './components/Homepage/Main/Main';
-import Dashboard from './components/Dashboard/Dashboard';
+import HomePage from "./pages/HomePage.jsx";
+import SignUpPage from "./pages/SignUpPage.jsx";
+import LogInPage from "./pages/LogInPage.jsx";
+import SettingsPage from "./pages/SettingsPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
+
+import { Routes, Route } from "react-router-dom";
+import { useAuthStore } from "./store/authStore.js";
+import { useEffect } from "react";
 
 export const App = () => {
+
+  const {authUser, checkAuth} = useAuthStore()
+
+  useEffect(() => {
+    checkAuth()
+  }, [checkAuth]);
+  console.log({authUser})
+
   return (
-    <BrowserRouter>
+    <div>
+
       <Routes>
-
-        {/* Public Layout */}
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Main />} />
-        </Route>
-
-        {/* Dashboard Layout */}
-        <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Route>
-
+        <Route path="/" element={<HomePage/>}></Route>
+        <Route path="/signup" element={<SignUpPage/>}></Route>
+        <Route path="/login" element={<LogInPage/>}></Route>
+        <Route path="/settings" element={<SettingsPage/>}></Route>
+        <Route path="/profile" element={<ProfilePage/>}></Route>
       </Routes>
-    </BrowserRouter>
+
+    </div>
   );
 };
 
