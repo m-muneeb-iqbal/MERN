@@ -36,7 +36,7 @@ const Header = () => {
                     <div className="col-4 d-flex justify-content-center">
                         <button
                             type="button"
-                            className="btn btn-success btn-sm"
+                            className="btn btn-success btn-sm signin-btn"
                             data-bs-toggle="modal"
                             data-bs-target="#signInModal"
                         >
