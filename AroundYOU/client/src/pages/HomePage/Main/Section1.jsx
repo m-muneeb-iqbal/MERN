@@ -1,7 +1,7 @@
 import React from "react";
 import { useScrollToSectionCover } from "../../../hooks/useScrollToSectionCover";
 import { useState } from "react";
-import { useAuthStore } from "../../../store/useAuthStore"
+import { useAuthStore } from "../../../store/useAuthStore";
 
 const Section1 = () => {
   const scrollToSectionCover = useScrollToSectionCover();
@@ -9,6 +9,8 @@ const Section1 = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
+    username: "",
+    role: "",
     password: "",
   });
 
@@ -130,8 +132,26 @@ const Section1 = () => {
                         type="text"
                         placeholder="Enter your username"
                         className="form-control col-md-12 mb-3"
+                        value={formData.username}
+                        onChange={(e) =>
+                          setFormData({ ...formData, username: e.target.value })
+                        }
                         required
                       />
+                      <select
+                        className="form-control col-md-12 mb-3"
+                        value={formData.role}
+                        onChange={(e) =>
+                          setFormData({ ...formData, role: e.target.value })
+                        }
+                        required
+                      >
+                        <option value="" disabled>
+                          -- Select your role --
+                        </option>
+                        <option value="Student">Student</option>
+                        <option value="Alumni">Alumni</option>
+                      </select>
                       <input
                         type="password"
                         placeholder="Enter your password"
