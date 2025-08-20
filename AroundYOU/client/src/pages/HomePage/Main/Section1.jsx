@@ -1,6 +1,29 @@
 import React from "react";
+import { useScrollToSectionCover } from "../../../hooks/useScrollToSectionCover";
+import { useState } from "react";
+import { useAuthStore } from "../../../store/useAuthStore"
 
 const Section1 = () => {
+  const scrollToSectionCover = useScrollToSectionCover();
+  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+  });
+
+  const { signup, isSigningUp } = useAuthStore();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await signup(formData); // call your zustand signup action
+      console.log("Signup successful ✅");
+    } catch (err) {
+      console.error("Signup failed ❌", err);
+    }
+  };
   return (
     <section className="container-fluid mt-0 section-1">
       <div className="row">
@@ -78,11 +101,29 @@ const Section1 = () => {
                       Exciting things are coming, and you don't want to miss
                       out!
                     </p>
-                    <form className="needs-validation" novalidate>
+                    <form
+                      onSubmit={handleSubmit}
+                      className="needs-validation"
+                      novalidate
+                    >
+                      <input
+                        type="text"
+                        placeholder="Enter your full name"
+                        className="form-control col-md-12 mb-3"
+                        value={formData.fullName}
+                        onChange={(e) =>
+                          setFormData({ ...formData, fullName: e.target.value })
+                        }
+                        required
+                      />
                       <input
                         type="email"
                         placeholder="Enter your email"
                         className="form-control col-md-12 mb-3"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
                         required
                       />
                       <input
@@ -95,6 +136,10 @@ const Section1 = () => {
                         type="password"
                         placeholder="Enter your password"
                         className="form-control col-md-12 mb-3"
+                        value={formData.password}
+                        onChange={(e) =>
+                          setFormData({ ...formData, password: e.target.value })
+                        }
                         required
                       />
                       <input
@@ -106,9 +151,10 @@ const Section1 = () => {
 
                       <button
                         className="btn btn-success col-md-12 w-100 main-submit"
+                        disabled={isSigningUp}
                         type="submit"
                       >
-                        Join
+                        {isSigningUp ? "Joining..." : "Join"}
                       </button>
                     </form>
                   </div>
@@ -121,7 +167,7 @@ const Section1 = () => {
             src="/Images/icons/Mouse.png"
             alt="scroll mouse"
             className="img-fluid mouse-icon"
-            onclick="scrollToSectionCover()"
+            onClick={() => scrollToSectionCover(".cover-section")}
           />
         </div>
 

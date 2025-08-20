@@ -1,6 +1,5 @@
 import React from "react";
-
-const Section2 = () => {
+const Section3 = () => {
   return (
     <section className="section-3 container-fluid mb-0">
       <div className="row">
@@ -175,4 +174,4 @@ const Section2 = () => {
   );
 };
 
-export default Section2;
+export default Section3;
