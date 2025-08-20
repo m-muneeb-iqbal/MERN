@@ -54,17 +54,20 @@ export const signup = async (req, res) => {
 };
 
 export const login = async (req, res) => {
+  console.log("Login route hit");
   const { email, password } = req.body;
 
   try {
     const user = await User.findOne({ email });
 
     if (!user) {
+      console.log("User not found");
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) {
+      console.log("Password mismatch");
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
