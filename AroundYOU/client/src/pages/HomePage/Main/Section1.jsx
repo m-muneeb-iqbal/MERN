@@ -1,28 +1,13 @@
 import { useScrollToSectionCover } from "../../../hooks/useScrollToSectionCover";
 import { useState, useEffect } from "react";
 import { useAuthStore } from "../../../store/useAuthStore";
-import { Modal } from "bootstrap";
-
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
+import { useNavigate } from "react-router-dom";
 
 const Section1 = ({ showSignupModal }) => {
-  useEffect(() => {
-    if (showSignupModal) {
-      const modalEl = document.getElementById("signUpModal");
-      if (modalEl) {
-        const modalInstance = new bootstrap.Modal(modalEl);
-        modalInstance.show();
-        modalEl.addEventListener("hidden.bs.modal", () => {
-          document.body.classList.remove("modal-open");
-          const backdrop = document.querySelector(".modal-backdrop");
-          if (backdrop) backdrop.remove();
-
-          window.history.pushState({}, "", "/");
-        })
-      }
-    }
-  }, [showSignupModal]);
   const scrollToSectionCover = useScrollToSectionCover();
+  const navigate = useNavigate();
+  const { signup, isSigningUp } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -30,15 +15,28 @@ const Section1 = ({ showSignupModal }) => {
     username: "",
     role: "",
     password: "",
+    confirmPassword: "",
   });
+  useEffect(() => {
+    if (showSignupModal) {
+      const signupModalEl = document.getElementById("signUpModal");
+      if (signupModalEl) {
+        const signupModal = new bootstrap.Modal(signupModalEl);
+        signupModal.show();
 
-  const { signup, isSigningUp } = useAuthStore();
-
+        signupModalEl.addEventListener("hidden.bs.modal", () => {
+          document.body.classList.remove("modal-open");
+          const backdrop = document.querySelector(".modal-backdrop");
+          if (backdrop) backdrop.remove();
+          window.history.pushState({}, "", "/");
+        });
+      }
+    }
+  }, [showSignupModal]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
 
-    // Now check overall validity
     if (!form.checkValidity()) {
       e.stopPropagation();
       form.classList.add("was-validated");
@@ -48,6 +46,8 @@ const Section1 = ({ showSignupModal }) => {
     try {
       await signup(formData);
       console.log("Signup successful ✅");
+
+      // Reset form
       setFormData({
         fullName: "",
         email: "",
@@ -56,15 +56,26 @@ const Section1 = ({ showSignupModal }) => {
         password: "",
         confirmPassword: "",
       });
-
-      // 2. Clear validation classes
       form.classList.remove("was-validated");
 
-      // 3. Close modal (Bootstrap way)
-      const modal = Modal.getInstance(
-        document.getElementById("signUpModal")
-      );
-      if (modal) modal.hide();
+      // Close signup modal and clean up
+      const signupModalEl = document.getElementById("signUpModal");
+      const signupModal = bootstrap.Modal.getInstance(signupModalEl);
+      signupModal?.hide();
+      document.body.classList.remove("modal-open");
+      const backdrop = document.querySelector(".modal-backdrop");
+      if (backdrop) backdrop.remove();
+
+      // Open login modal
+      const loginModalEl = document.getElementById("signInModal");
+      if (loginModalEl) {
+        const loginModal = new bootstrap.Modal(loginModalEl);
+        loginModal.show();
+      }
+
+      // Ensure URL is homepage
+      window.history.pushState({}, "", "/");
+
     } catch (err) {
       console.error("Signup failed ❌", err);
     }
