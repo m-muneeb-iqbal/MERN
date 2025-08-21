@@ -1,5 +1,4 @@
 import HomePage from "./pages/HomePage.jsx";
-import LogInPage from "./pages/LogInPage.jsx";
 import SettingsPage from "./pages/SettingsPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 
@@ -31,12 +30,12 @@ export const App = () => {
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/signup" element={!authUser ? <HomePage /> : <Navigate to="/" />} />
-                <Route path="/login" element={!authUser ? <LogInPage />: <Navigate to="/" />} />
-                <Route path="/settings" element={authUser ? <SettingsPage /> : <Navigate to="/login" />} />
-                <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
+                <Route path="/signup" element={authUser ? <Navigate to="/profile" /> : <HomePage showSignupModal={true} />} />
+                <Route path="/login" element={authUser ? <Navigate to="/profile" /> : <HomePage showLoginModal={true} />} />
+                <Route path="/settings" element={authUser ? <SettingsPage /> : <Navigate to="/" />} />
+                <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/" />} />
             </Routes>
-
+            
         </div>
     );
 }

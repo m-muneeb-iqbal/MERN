@@ -1,9 +1,20 @@
 import { useScrollToSectionCover } from "../../../hooks/useScrollToSectionCover";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuthStore } from "../../../store/useAuthStore";
 import { Modal } from "bootstrap";
 
-const Section1 = () => {
+import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
+
+const Section1 = ({ showSignupModal }) => {
+  useEffect(() => {
+    if (showSignupModal) {
+      const signupModalEl = document.getElementById("signUpModal");
+      if (signupModalEl) {
+        const signupModal = new bootstrap.Modal(signupModalEl);
+        signupModal.show();
+      }
+    }
+  }, [showSignupModal]);
   const scrollToSectionCover = useScrollToSectionCover();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -43,7 +54,9 @@ const Section1 = () => {
       form.classList.remove("was-validated");
 
       // 3. Close modal (Bootstrap way)
-      const modal = Modal.getInstance(document.getElementById("staticBackdrop"));
+      const modal = Modal.getInstance(
+        document.getElementById("signUpModal")
+      );
       if (modal) modal.hide();
     } catch (err) {
       console.error("Signup failed ❌", err);
@@ -72,7 +85,7 @@ const Section1 = () => {
               type="button"
               className="btn btn-success join-btn"
               data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
+              data-bs-target="#signUpModal"
             >
               Sign up Now
               <img
@@ -84,11 +97,11 @@ const Section1 = () => {
 
             <div
               className="modal fade"
-              id="staticBackdrop"
+              id="signUpModal"
               data-bs-backdrop="static"
               data-bs-keyboard="false"
               tabindex="-1"
-              aria-labelledby="staticBackdropLabel"
+              aria-labelledby="signUpModalLabel"
               aria-hidden="true"
             >
               <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -117,7 +130,7 @@ const Section1 = () => {
                   <div className="modal-body p-5">
                     <p
                       className="modal-title fw-bolder text-start waiting-list"
-                      id="staticBackdropLabel"
+                      id="signUpModalLabel"
                     >
                       Join the Waiting List and Secure Your Spot!
                     </p>
