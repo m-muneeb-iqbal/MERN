@@ -1,7 +1,7 @@
-import React from "react";
 import { useScrollToSectionCover } from "../../../hooks/useScrollToSectionCover";
 import { useState } from "react";
 import { useAuthStore } from "../../../store/useAuthStore";
+import { Modal } from "bootstrap";
 
 const Section1 = () => {
   const scrollToSectionCover = useScrollToSectionCover();
@@ -18,10 +18,33 @@ const Section1 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.target;
+
+    // Now check overall validity
+    if (!form.checkValidity()) {
+      e.stopPropagation();
+      form.classList.add("was-validated");
+      return;
+    }
 
     try {
-      await signup(formData); // call your zustand signup action
+      await signup(formData);
       console.log("Signup successful ✅");
+      setFormData({
+        fullName: "",
+        email: "",
+        username: "",
+        role: "",
+        password: "",
+        confirmPassword: "",
+      });
+
+      // 2. Clear validation classes
+      form.classList.remove("was-validated");
+
+      // 3. Close modal (Bootstrap way)
+      const modal = Modal.getInstance(document.getElementById("staticBackdrop"));
+      if (modal) modal.hide();
     } catch (err) {
       console.error("Signup failed ❌", err);
     }
@@ -106,11 +129,11 @@ const Section1 = () => {
                     <form
                       onSubmit={handleSubmit}
                       className="needs-validation"
-                      novalidate
+                      noValidate
                     >
                       <input
                         type="text"
-                        placeholder="Enter your full name"
+                        placeholder="Full Name"
                         className="form-control col-md-12 mb-3"
                         value={formData.fullName}
                         onChange={(e) =>
@@ -120,7 +143,7 @@ const Section1 = () => {
                       />
                       <input
                         type="email"
-                        placeholder="Enter your email"
+                        placeholder="Email"
                         className="form-control col-md-12 mb-3"
                         value={formData.email}
                         onChange={(e) =>
@@ -130,7 +153,7 @@ const Section1 = () => {
                       />
                       <input
                         type="text"
-                        placeholder="Enter your username"
+                        placeholder="Username"
                         className="form-control col-md-12 mb-3"
                         value={formData.username}
                         onChange={(e) =>
@@ -154,21 +177,29 @@ const Section1 = () => {
                       </select>
                       <input
                         type="password"
-                        placeholder="Enter your password"
+                        placeholder="Enter Password"
                         className="form-control col-md-12 mb-3"
                         value={formData.password}
                         onChange={(e) =>
                           setFormData({ ...formData, password: e.target.value })
                         }
                         required
+                        minLength={8}
                       />
                       <input
                         type="password"
-                        placeholder="Enter your password again"
+                        placeholder="Confirm Password"
                         className="form-control col-md-12 mb-3"
+                        value={formData.confirmPassword}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            confirmPassword: e.target.value,
+                          })
+                        }
                         required
+                        minLength={8}
                       />
-
                       <button
                         className="btn btn-success col-md-12 w-100 main-submit"
                         disabled={isSigningUp}

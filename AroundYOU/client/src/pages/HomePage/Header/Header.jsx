@@ -163,7 +163,7 @@ const Header = () => {
                         </div>
 
                         <div className="modal-body p-5">
-                            <p className="fw-bolder text-start fs-5">Sign In to Your Account</p>
+                            <p className="fw-bolder text-start sign-in">Sign In to Your Account</p>
                             <p className="text-start">Welcome back! Please sign in to continue.</p>
                             <form className="needs-validation" noValidate>
                                 <input
