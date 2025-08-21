@@ -4,10 +4,24 @@ import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 const Header = ({ showLoginModal }) => {
   useEffect(() => {
     if (showLoginModal) {
-      const loginModalEl = document.getElementById("signInModal");
-      if (loginModalEl) {
-        const loginModal = new bootstrap.Modal(loginModalEl);
-        loginModal.show();
+      // or showSignupModal
+      const modalEl = document.getElementById("signInModal");
+      if (modalEl) {
+        const modalInstance = new bootstrap.Modal(modalEl);
+
+        // show the modal
+        modalInstance.show();
+
+        // listen for when modal is hidden
+        modalEl.addEventListener("hidden.bs.modal", () => {
+          // remove any leftover modal classes
+          document.body.classList.remove("modal-open");
+          const backdrop = document.querySelector(".modal-backdrop");
+          if (backdrop) backdrop.remove();
+
+          // optional: navigate back to "/"
+          window.history.pushState({}, "", "/");
+        });
       }
     }
   }, [showLoginModal]);

@@ -8,10 +8,17 @@ import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 const Section1 = ({ showSignupModal }) => {
   useEffect(() => {
     if (showSignupModal) {
-      const signupModalEl = document.getElementById("signUpModal");
-      if (signupModalEl) {
-        const signupModal = new bootstrap.Modal(signupModalEl);
-        signupModal.show();
+      const modalEl = document.getElementById("signUpModal");
+      if (modalEl) {
+        const modalInstance = new bootstrap.Modal(modalEl);
+        modalInstance.show();
+        modalEl.addEventListener("hidden.bs.modal", () => {
+          document.body.classList.remove("modal-open");
+          const backdrop = document.querySelector(".modal-backdrop");
+          if (backdrop) backdrop.remove();
+
+          window.history.pushState({}, "", "/");
+        })
       }
     }
   }, [showSignupModal]);
