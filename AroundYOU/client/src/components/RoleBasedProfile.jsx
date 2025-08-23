@@ -1,8 +1,8 @@
 // components/RoleBasedProfile.jsx
 import { useNavigate } from "react-router-dom";
-import StudentProfile from "../pages/StudentProfile";
-import AlumniProfile from "../pages/AlumniProfile";
-import AdminProfile from "../pages/AdminProfile";
+import StudentProfile from "../pages/ProfilePage/StudentProfile"
+import AlumniProfile from "../pages/ProfilePage/AlumniProfile";
+import AdminProfile from "../pages/ProfilePage/AdminProfile";
 import { useAuthStore } from "../store/useAuthStore";
 
 const RoleBasedProfile = () => {

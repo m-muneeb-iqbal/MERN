@@ -1,6 +1,6 @@
-import Header from "./HomePage/Header/Header";
-import Main from "./HomePage/Main/Main";
-import Footer from "./HomePage/Footer/Footer";
+import Header from "./Header/Header";
+import Main from "./Main/Main";
+import Footer from "./Footer/Footer";
 
 const HomePage = ({ showSignupModal }) => {
   return (

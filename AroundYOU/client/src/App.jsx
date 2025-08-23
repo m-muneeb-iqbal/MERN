@@ -1,5 +1,5 @@
-import HomePage from "./pages/HomePage.jsx";
-import SettingsPage from "./pages/SettingsPage.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+import SettingsPage from "./pages/SettingsPage/SettingsPage.jsx";
 import RoleBasedProfile from "./components/RoleBasedProfile.jsx"
 
 import { Routes, Route, Navigate } from "react-router-dom";
