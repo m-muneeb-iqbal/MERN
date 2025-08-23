@@ -69,11 +69,13 @@ const Section1 = () => {
       form.classList.remove("was-validated");
 
       // Close signup modal and clean up
-      const modalEl = document.getElementById("signInModal");
+      const modalEl = document.getElementById("signUpModal");
       const modalInstance = bootstrap.Modal.getInstance(modalEl);
       modalInstance.hide();
-
-      navigate("/login")
+      
+      modalEl.addEventListener("hidden.bs.modal", () => {
+        navigate("/login");
+      });
 
     } catch (err) {
       console.error("Signup failed ❌", err);
