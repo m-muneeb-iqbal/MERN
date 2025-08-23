@@ -41,7 +41,14 @@ const Header = () => {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
+    const form = e.target;
     setLoading(true);
+
+    if (!form.checkValidity()) {
+      e.stopPropagation();
+      form.classList.add("was-validated");
+      return;
+    }
 
     try {
       const res = await axios.post(
@@ -53,6 +60,8 @@ const Header = () => {
       );
       // save user in Zustand store
       setAuthUser(res.data.user);
+
+      form.classList.remove("was-validated");
 
       // close modal
       const modalEl = document.getElementById("signInModal");

@@ -69,25 +69,15 @@ const Section1 = () => {
       form.classList.remove("was-validated");
 
       // Close signup modal and clean up
-      const signupModalEl = document.getElementById("signUpModal");
-      const signupModal = bootstrap.Modal.getInstance(signupModalEl);
-      signupModal?.hide();
-      document.body.classList.remove("modal-open");
-      const backdrop = document.querySelector(".modal-backdrop");
-      if (backdrop) backdrop.remove();
+      const modalEl = document.getElementById("signInModal");
+      const modalInstance = bootstrap.Modal.getInstance(modalEl);
+      modalInstance.hide();
 
-      // Open login modal
-      const loginModalEl = document.getElementById("signInModal");
-      if (loginModalEl) {
-        const loginModal = new bootstrap.Modal(loginModalEl);
-        loginModal.show();
-      }
-
-      // Ensure URL is homepage
-      window.history.pushState({}, "", "/");
+      navigate("/login")
 
     } catch (err) {
       console.error("Signup failed ❌", err);
+      alert(err.response?.data?.message || "Signup failed");
     }
   };
   return (

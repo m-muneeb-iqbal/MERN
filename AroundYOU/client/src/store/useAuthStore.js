@@ -31,7 +31,6 @@ export const useAuthStore = create((set) => ({
       const res = await axiosInstance.post("/auth/signup", data, {
         withCredentials: true, // so JWT cookie is stored
       });
-      set({ authUser: res.data });
       return res.data;
     } catch (error) {
       console.error("Error in signup:", error.response?.data || error.message);
