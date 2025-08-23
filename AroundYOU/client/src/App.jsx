@@ -1,6 +1,6 @@
 import HomePage from "./pages/HomePage.jsx";
 import SettingsPage from "./pages/SettingsPage.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
+import RoleBasedProfile from "./components/RoleBasedProfile.jsx"
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore.js";
@@ -31,9 +31,9 @@ export const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/signup" element={<HomePage showSignupModal={true} />} />
-                <Route path="/login" element={!authUser ? <HomePage showLoginModal={true} /> : <Navigate to="/profile" />} />
+                <Route path="/login" element={ !authUser ? <HomePage showLoginModal /> : <Navigate to="/profile" />} />
+                <Route path="/profile" element={authUser ? <RoleBasedProfile /> : <Navigate to="/" />} />
                 <Route path="/settings" element={authUser ? <SettingsPage /> : <Navigate to="/" />} />
-                <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/" />} />
             </Routes>
             
         </div>

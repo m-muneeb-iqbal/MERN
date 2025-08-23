@@ -1,30 +1,65 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../../store/useAuthStore" // adjust path if needed
+import axios from "axios";
 
 const Header = ({ showLoginModal }) => {
+  const navigate = useNavigate();
+  const { setAuthUser } = useAuthStore(); // <-- your Zustand action to set user
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (showLoginModal) {
-      // or showSignupModal
       const modalEl = document.getElementById("signInModal");
       if (modalEl) {
         const modalInstance = new bootstrap.Modal(modalEl);
-
-        // show the modal
         modalInstance.show();
 
-        // listen for when modal is hidden
         modalEl.addEventListener("hidden.bs.modal", () => {
-          // remove any leftover modal classes
           document.body.classList.remove("modal-open");
           const backdrop = document.querySelector(".modal-backdrop");
           if (backdrop) backdrop.remove();
-
-          // optional: navigate back to "/"
           window.history.pushState({}, "", "/");
         });
       }
     }
   }, [showLoginModal]);
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        formData,
+        {
+          withCredentials: true, // important so JWT cookie gets stored
+        }
+      );
+      // save user in Zustand store
+      setAuthUser(res.data.user);
+
+      // close modal
+      const modalEl = document.getElementById("signInModal");
+      const modalInstance = bootstrap.Modal.getInstance(modalEl);
+      modalInstance.hide();
+
+      // navigate to profile
+      navigate("/profile");
+    } catch (err) {
+      console.error("Login failed:", err.response?.data || err.message);
+      alert(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <header>
       <div className="container-fluid">
@@ -60,8 +95,7 @@ const Header = ({ showLoginModal }) => {
             <button
               type="button"
               className="btn btn-success btn-sm signin-btn"
-              data-bs-toggle="modal"
-              data-bs-target="#signInModal"
+              onClick={() => navigate("/login")}
             >
               Log In
             </button>
@@ -208,21 +242,27 @@ const Header = ({ showLoginModal }) => {
               <p className="text-start">
                 Welcome back! Please sign in to continue.
               </p>
-              <form className="needs-validation" noValidate>
+              <form className="needs-validation" onSubmit={handleLogin}  noValidate>
                 <input
                   type="email"
+                  name="email"
                   placeholder="Enter your email"
                   className="form-control mb-3"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                 />
                 <input
                   type="password"
+                  name="password"
                   placeholder="Enter your password"
                   className="form-control mb-3"
+                  value={formData.password}
+                  onChange={handleChange}
                   required
                 />
-                <button className="btn btn-success w-100" type="submit">
-                  Sign In
+                <button className="btn btn-success w-100" type="submit" disabled={loading}>
+                  {loading ? "Signing In..." : "Sign In"}
                 </button>
               </form>
             </div>
