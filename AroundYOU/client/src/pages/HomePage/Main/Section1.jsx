@@ -259,7 +259,7 @@ const Section1 = ({ showSignupModal }) => {
               <div className="main-image position-absolute">
                 <img
                   src="/Images/notIcons/Mobile logo Style.png"
-                  alt="edyou logo"
+                  alt="aroundyou logo"
                   className="img-fluid"
                 />
               </div>

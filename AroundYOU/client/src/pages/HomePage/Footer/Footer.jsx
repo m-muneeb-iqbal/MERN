@@ -11,9 +11,9 @@ const Footer = () => {
 
           <div className="col-md-7 col-12 d-flex flex-column justify-content-end">
             <p>
-              EDYOU was created by Cornell MBA Graduate students who wanted to
-              create a EDU community, a place to stay connected with their
-              college friends and segment college life onto one all-inclusive
+              AROUNDYOU was created by Comsats Under-Graduate student who wanted to
+              create a AROUNDYOU community, a place to stay connected with their
+              university friends and segment university life onto one all-inclusive
               platform.
             </p>
 
@@ -24,26 +24,26 @@ const Footer = () => {
             </p>
 
             <p>
-              EDYOU was created for U, the college students, and alumni to stay
+              AROUNDYOU was created for U, the university students, and alumni to stay
               connected.
             </p>
 
             <p>
-              EDYOU provides 100% User control over content, by allowing you to
+              AROUNDYOU provides 100% User control over content, by allowing you to
               select who sees your content and allowing you to decide for how
               long the content will live before being deleted permanently off
               our servers.
             </p>
 
             <p>
-              We look forward to growing EDYOU and adding new features and
+              We look forward to growing AROUNDYOU and adding new features and
               products over the next few months and would love to hear your
               feedback, so please reach out to us.
             </p>
 
-            <p>Welcome to our EDYOU community,</p>
+            <p>Welcome to our AROUNDYOU community,</p>
 
-            <p className="fw-bold">TEAM EDYOU</p>
+            <p className="fw-bold">TEAM AROUNDYOU</p>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@ const Footer = () => {
             <div className="col-lg-10 col-sm-8 col-12 d-flex justify-content-sm-start justify-content-center mt-3">
               <img
                 src="../Images/notIcons/edyou-footer.svg"
-                alt="edyou logo"
+                alt="aroundyou logo"
                 className="img-fluid"
                 height="100px"
               />
@@ -112,7 +112,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-lg-9 col-12 d-flex justify-content-lg-start justify-content-center">
             <p className="no-hover-privacy-policy">
-              All rights reserved. EDYOU © 2025
+              All rights reserved. AROUNDYOU © 2025
             </p>
           </div>
 

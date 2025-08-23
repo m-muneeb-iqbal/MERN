@@ -6,7 +6,7 @@ const Section2 = () => {
       <div className="row">
         <div className="col-12 d-flex justify-content-center cover-section">
           <img
-            src="../Images/notIcons/Group 357.png"
+            src="../Images/notIcons/cover-brand-picture.png"
             alt="cover brand picture"
             className="img-fluid pt-5"
           />

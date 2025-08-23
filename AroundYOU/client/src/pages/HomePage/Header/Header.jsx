@@ -84,7 +84,7 @@ const Header = ({ showLoginModal }) => {
           {/* Center: Logo */}
           <div className="col-4 text-center">
             <img
-              src="/Images/notIcons/edyou-main-heading.png"
+              src="/Images/notIcons/aroundyou-main-heading.png"
               alt="Edyou logo"
               className="img-fluid"
             />
@@ -126,7 +126,7 @@ const Header = ({ showLoginModal }) => {
           </button>
           <img
             src="/Images/notIcons/edyou-sidebar.svg"
-            alt="Edyou Sidebar Logo"
+            alt="Aroundyou Sidebar Logo"
             className="img-fluid"
           />
         </div>
@@ -177,7 +177,7 @@ const Header = ({ showLoginModal }) => {
             <div className="row">
               <div className="col-md-6 col-12 mb-3">
                 <label className="fw-bold text-black-50">Email</label>
-                <p className="fw-bold text-black-50">supportme@edyou.com</p>
+                <p className="fw-bold text-black-50">supportme@aroundyou.com</p>
               </div>
               <div className="col-md-6 col-12 mb-3">
                 <label className="fw-bold text-black-50">Phone</label>
