@@ -7,12 +7,15 @@ export const useAuthStore = create((set) => ({
   isLoggingIn: false,
   isUpdatingProfile: false,
   isCheckingAuth: true,
+  
+  setAuthUser: (user) => set((state) => ({ ...state, authUser: user })),
 
   checkAuth: async () => {
     try {
       const res = await axiosInstance.get("/auth/check", {
         withCredentials: true,
       });
+      console.log("CheckAuth response:", res.data);
       set({ authUser: res.data });
     } catch (error) {
       console.log("Error in checkAuth: ", error);
@@ -43,7 +46,8 @@ export const useAuthStore = create((set) => ({
       const res = await axiosInstance.post("/auth/login", data, {
         withCredentials: true,
       });
-      set({ authUser: res.data });
+      console.log("Login response:", res.data);
+      await useAuthStore.getState().checkAuth();
       return res.data;
     } catch (error) {
       console.error("Error in login:", error.response?.data || error.message);

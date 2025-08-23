@@ -1,5 +1,5 @@
 // components/RoleBasedProfile.jsx
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import StudentProfile from "../pages/StudentProfile";
 import AlumniProfile from "../pages/AlumniProfile";
 import AdminProfile from "../pages/AdminProfile";
@@ -7,15 +7,15 @@ import { useAuthStore } from "../store/useAuthStore";
 
 const RoleBasedProfile = () => {
   const { authUser, logout } = useAuthStore();
-
-  if (!authUser) return <Navigate to="/" />;
+  const navigate = useNavigate();
+  if (!authUser) return <navigate to="/" />;
 
   const renderProfile = () => {
     switch (authUser.role) {
       case "Student":
         return <StudentProfile />;
-      case "Teacher":
-        return <TeacherProfile />;
+      case "Alumni":
+        return <AlumniProfile />;
       case "Admin":
         return <AdminProfile />;
       default:
@@ -33,7 +33,10 @@ const RoleBasedProfile = () => {
 
       {/* Test logout button */}
       <button
-        onClick={logout}
+        onClick={async () => {
+          await logout(); // clear session
+          navigate("/"); // redirect after logout
+        }}
         className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg"
       >
         Logout
