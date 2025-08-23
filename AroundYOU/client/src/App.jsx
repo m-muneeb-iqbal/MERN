@@ -31,7 +31,7 @@ export const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/signup" element={<HomePage showSignupModal={true} />} />
-                <Route path="/login" element={ !authUser ? <HomePage showLoginModal /> : <Navigate to="/profile" />} />
+                <Route path="/login" element={!authUser ? <HomePage /> : <Navigate to="/profile" />} />
                 <Route path="/profile" element={authUser ? <RoleBasedProfile /> : <Navigate to="/" />} />
                 <Route path="/settings" element={authUser ? <SettingsPage /> : <Navigate to="/" />} />
             </Routes>

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../../store/useAuthStore" // adjust path if needed
 import axios from "axios";
 
-const Header = ({ showLoginModal }) => {
+const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { setAuthUser } = useAuthStore(); // <-- your Zustand action to set user
   const [formData, setFormData] = useState({
     email: "",
@@ -13,21 +14,28 @@ const Header = ({ showLoginModal }) => {
   });
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    if (showLoginModal) {
-      const modalEl = document.getElementById("signInModal");
-      if (modalEl) {
-        const modalInstance = new bootstrap.Modal(modalEl);
-        modalInstance.show();
+    const modalEl = document.getElementById("signInModal");
+    if (!modalEl) return;
 
-        modalEl.addEventListener("hidden.bs.modal", () => {
-          document.body.classList.remove("modal-open");
-          const backdrop = document.querySelector(".modal-backdrop");
-          if (backdrop) backdrop.remove();
-          window.history.pushState({}, "", "/");
-        });
-      }
+    const modalInstance = new bootstrap.Modal(modalEl);
+
+    if (location.pathname === "/login") {
+      modalInstance.show();
     }
-  }, [showLoginModal]);
+
+    const handleHidden = () => {
+      document.body.classList.remove("modal-open");
+      const backdrop = document.querySelector(".modal-backdrop");
+      if (backdrop) backdrop.remove();
+      navigate("/"); // 👈 back to home
+    };
+
+    modalEl.addEventListener("hidden.bs.modal", handleHidden);
+
+    return () => {
+      modalEl.removeEventListener("hidden.bs.modal", handleHidden);
+    };
+  }, [location, navigate]);
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
