@@ -2,11 +2,12 @@ import { useScrollToSectionCover } from "../../../hooks/useScrollToSectionCover"
 import { useState, useEffect } from "react";
 import { useAuthStore } from "../../../store/useAuthStore";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const Section1 = ({ showSignupModal }) => {
+const Section1 = () => {
   const scrollToSectionCover = useScrollToSectionCover();
   const navigate = useNavigate();
+  const location = useLocation();
   const { signup, isSigningUp } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -18,21 +19,30 @@ const Section1 = ({ showSignupModal }) => {
     confirmPassword: "",
   });
   useEffect(() => {
-    if (showSignupModal) {
-      const signupModalEl = document.getElementById("signUpModal");
-      if (signupModalEl) {
-        const signupModal = new bootstrap.Modal(signupModalEl);
-        signupModal.show();
 
-        signupModalEl.addEventListener("hidden.bs.modal", () => {
-          document.body.classList.remove("modal-open");
-          const backdrop = document.querySelector(".modal-backdrop");
-          if (backdrop) backdrop.remove();
-          window.history.pushState({}, "", "/");
-        });
-      }
+    const modalEl = document.getElementById("signUpModal");
+    if (!modalEl) return;
+
+    const modalInstance = new bootstrap.Modal(modalEl);
+
+    if (location.pathname === "/signup"){
+      modalInstance.show();
     }
-  }, [showSignupModal]);
+
+    const handleHidden = () => {
+      document.body.classList.remove("modal-open");
+      const backdrop = document.querySelector(".modal-backdrop");
+      if (backdrop) backdrop.remove();
+      navigate("/"); // 👈 back to home
+    };
+
+    modalEl.addEventListener("hidden.bs.modal", handleHidden);
+
+    return () => {
+      modalEl.removeEventListener("hidden.bs.modal", handleHidden);
+    };
+  }, [location, navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -102,8 +112,7 @@ const Section1 = ({ showSignupModal }) => {
             <button
               type="button"
               className="btn btn-success join-btn"
-              data-bs-toggle="modal"
-              data-bs-target="#signUpModal"
+              onClick = {() => navigate("/signup")}
             >
               Sign up Now
               <img

@@ -2,11 +2,11 @@ import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 
-const HomePage = ({ showSignupModal }) => {
+const HomePage = () => {
   return (
     <div>
       <Header/>
-      <Main showSignupModal={showSignupModal} />
+      <Main/>
       <Footer/>
     </div>
   );
