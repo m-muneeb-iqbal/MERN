@@ -2,7 +2,7 @@ import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 
-const HomePage = () => {
+const LandingPage = () => {
   return (
     <div>
       <Header/>
@@ -12,4 +12,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default LandingPage;
