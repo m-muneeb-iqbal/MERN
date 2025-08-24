@@ -1,13 +1,12 @@
-import HomePage from "./pages/LandingPage/LandingPage.jsx";
-import SettingsPage from "./pages/SettingsPage/SettingsPage.jsx";
-import RoleBasedProfile from "./components/RoleBasedProfile.jsx"
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore.js";
 import { useEffect } from "react";
 
-import { Loader } from "lucide-react";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
+import RoleBasedProfile from "./components/RoleBasedProfile.jsx"
+import SettingsPage from "./pages/SettingsPage/SettingsPage.jsx";
+
+import { Loader } from "lucide-react";
 
 export const App = () => {
 
@@ -20,6 +19,7 @@ export const App = () => {
     console.log({ authUser });
 
     if (isCheckingAuth && !authUser) return (
+
         <div className="flex items-center justify-center h-screen">
             <Loader className="size-10 animate-spin" />
         </div>
